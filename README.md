@@ -34,7 +34,7 @@ Hello from Jenkins CI/CD!
 
 ## 📁 Project Setup and Steps
 
-### ✅ 1. Launch EC2 Instance on AWS
+### 1. Launch EC2 Instance on AWS
 
 - Ubuntu-based t2.micro instance (Free tier)
 - Allow inbound ports: `22` (SSH), `8080` (Jenkins), `3000` (App)
@@ -51,7 +51,7 @@ sudo apt install -y docker.io openjdk-17-jdk git
 sudo systemctl enable docker
 sudo usermod -aG docker ubuntu
 
-3. Install Jenkins
+### 3. Install Jenkins
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt update
@@ -59,22 +59,22 @@ sudo apt install -y jenkins
 sudo systemctl start jenkins
 Access Jenkins on http://<EC2-Public-IP>:8080
 
-4. Unlock Jenkins 
+### 4. Unlock Jenkins 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
-Create admin user
-5. Install Plugins
+
+### 5. Install Plugins
 Nodejs,
 Docker all plugins
 
-6. Setup Docker Credentials in Jenkins
+### 6. Setup Docker Credentials in Jenkins
 Go to: Manage Jenkins → Credentials → System → Global
 Add “Username with Password”
 ID: dockerhub-creds
 Username: your Docker Hub username
 Password: your Docker Hub password
 
-7. Create Jenkins Pipeline
+### 7. Create Jenkins Pipeline
 Go to Jenkins → New Item → Pipeline → Name: Node-CI-CD
 Under Pipeline Script, add the following Jenkinsfile:
 
@@ -130,7 +130,7 @@ pipeline {
     }
 }
 
-8.
+### 8.
 Jenkins will:
 Clone the GitHub repo
 Install Node.js dependencies
@@ -138,7 +138,7 @@ Build Docker image
 Run container on port 3000
 Push image to Docker Hub
 
-9. Test Your App
+### 9. Test Your App
 Go to:
 http://<your-ec2-public-ip>:3000
 
@@ -159,14 +159,3 @@ This project is a full demonstration of CI/CD automation using Jenkins and Docke
 ---
 
 
-
-
-
-
-
-
-
-
-
-
-Search
